@@ -5,22 +5,18 @@ local Window = Library.CreateLib("HS Hub", "Ocean")
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Player")
 --MAIN_BUTTONS
-MainSection:NewButton("Speed", "Makes You Faster!", function()
+MainSection:NewToggle("Speed", "Makes You Faster!", function(speed)
+    if speed then
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 64
+    else
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    end    
 end)
 
 MainSection:NewButton("Jump", "Jump High!", function()
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
 end)
---FUN
-local Fun = Window:NewTab("Fun")
-local FunSection = Main:NewSection("Player")
---FUN_BUTTONS
-FunSection:NewButton("Admin", "Become an Admin!", function()
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-end)
 
-FunSection:NewButton("SuperHero", "Become an SuperHero!", function()
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 64
+MainSection:NewButton("Admin", "Become an Admin!", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 end)
