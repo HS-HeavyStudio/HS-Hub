@@ -5,22 +5,25 @@ local Window = Library.CreateLib("HS Hub", "Ocean")
 local Main = Window:NewTab("Main")
 local MainSection = Main:NewSection("Player")
 --MAIN_BUTTONS
-MainSection:NewToggle("Speed", "Makes You Faster!", function(speed)
-    if speed then
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 64
-    else
+MainSection:NewButton("Reset", "Resets to all defaults.", function()
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    end    
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
 end)
 
-MainSection:NewToggle("Jump", "Jump High!", function(jump)
-    if jump then
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
-    else
-    game.Players.localPlayer.Character.Humanoid.JumpPower = 50
-    end    
+MainSection:NewSlider("Speed", "Makes You Faster!", 500, 16, function(speed)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed     
 end)
 
-MainSection:NewButton("Admin", "Become an Admin!", function()
+MainSection:NewSlider("Jump", "Jump High!", 350, 50, function(jump)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump   
+end)
+--FUN
+local FunSection = Main:NewSection("Fun")
+--FUN_BUTTONS
+FunSection:NewButton("Admin", "Become an Admin!", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
+
+FunSection:NewButton("OPFinality", "Something Fun!", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/PhoenixAceVFX/Roblox-Scripts/master/!%20%5BFE%5D%20OPFinality%20Gui%20%5BBEST%5D.lua'),true))()
 end)
