@@ -13,8 +13,12 @@ MainSection:NewToggle("Speed", "Makes You Faster!", function(speed)
     end    
 end)
 
-MainSection:NewButton("Jump", "Jump High!", function()
+MainSection:NewToggle("Jump", "Jump High!", function(jump)
+    if jump then
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+    else
+    game.Players.localPlayer.Character.Humanoid.JumpPower = 50
+    end    
 end)
 
 MainSection:NewButton("Admin", "Become an Admin!", function()
