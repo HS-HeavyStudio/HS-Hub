@@ -30,9 +30,9 @@ end)
 --ARSENAL
 local Arsenal = Window:NewTab("Arsenal")
 local ArsenalSection = Arsenal:NewSection("Main")
-local ArsenalSection = Arsenal:NewSection("Other")
+local OtherSection = Arsenal:NewSection("Other")
 --ARSENAL_BUTTONS
-ArsenalSection:NewButton("AIM", "Become Hacker In Game!.", function()
+OtherSection:NewButton("AIM", "Become Hacker In Game!.", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
 end)
 
