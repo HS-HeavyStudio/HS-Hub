@@ -27,3 +27,24 @@ end)
 FunSection:NewButton("OPFinality", "Something Fun!", function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/PhoenixAceVFX/Roblox-Scripts/master/!%20%5BFE%5D%20OPFinality%20Gui%20%5BBEST%5D.lua'),true))()
 end)
+--ARSENAL
+local Arsenal = Window:NewTab("Arsenal")
+local ArsenalSection = Arsenal:NewSection("Main")
+local ArsenalSection = Arsenal:NewSection("Other")
+--ARSENAL_BUTTONS
+ArsenalSection:NewButton("AIM", "Become Hacker In Game!.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+end)
+
+ArsenalSection:NewButton("Reset", "Resets to all defaults.", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+end)
+
+ArsenalSection:NewSlider("Speed", "Makes You Faster!", 500, 16, function(speed)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed     
+end)
+
+ArsenalSection:NewSlider("Jump", "Jump High!", 350, 50, function(jump)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump   
+end)
