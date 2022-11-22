@@ -1,50 +1,73 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("HS Hub", "Ocean")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroText = "HS Hub"})
+
+--KEY
+OrionLib:MakeNotification({
+    Name = "Logged in!",
+	Content = "You are logged in as "..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_G.Key = "RGgOqgk49xKccS3smya2ZHK6V0Ln3RzjMHMcCIc7HZP4QlXYKB"
+_G.KeyInput = "string"
+   
+function IncorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Key",
+        Content = "You have entered the incorrect premium key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end 
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "Key",
+        Content = "You have entered the correct premium key!",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Enter Premium Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+        
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Premium Key",
+	Callback = function()
+      	if _G.KeyInput == _G.Key then
+        MakeScriptHub()
+        CorrectKeyNotification()
+        OrionLib:Destroy()
+        else
+        IncorrectKeyNotification()    
+  	    end    
+     end
+})
 
 --MAIN
-local Main = Window:NewTab("Main")
-local MainSection = Main:NewSection("Player")
---MAIN_BUTTONS
-MainSection:NewButton("Reset", "Resets to all defaults.", function()
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-end)
+function MakeScriptHub()
+    local Main = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+    local Window = Main:MakeWindow({Name = "HS Hub", HidePremium = false, SaveConfig = true, IntroText = "HS Hub"})
+end
 
-MainSection:NewSlider("Speed", "Makes You Faster!", 500, 16, function(speed)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed     
-end)
-
-MainSection:NewSlider("Jump", "Jump High!", 350, 50, function(jump)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump   
-end)
---FUN
-local FunSection = Main:NewSection("Fun")
---FUN_BUTTONS
-FunSection:NewButton("Admin", "Become an Admin!", function()
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-end)
-
-FunSection:NewButton("OPFinality", "Something Fun!", function()
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/PhoenixAceVFX/Roblox-Scripts/master/!%20%5BFE%5D%20OPFinality%20Gui%20%5BBEST%5D.lua'),true))()
-end)
---ARSENAL
-local Arsenal = Window:NewTab("Arsenal")
-local ArsenalSection = Arsenal:NewSection("Main")
-local OtherSection = Arsenal:NewSection("Other")
---ARSENAL_BUTTONS
-OtherSection:NewButton("AIM", "Become Hacker In Game!.", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
-end)
-
-ArsenalSection:NewButton("Reset", "Resets to all defaults.", function()
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-end)
-
-ArsenalSection:NewSlider("Speed", "Makes You Faster!", 500, 16, function(speed)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed     
-end)
-
-ArsenalSection:NewSlider("Jump", "Jump High!", 350, 50, function(jump)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump   
-end)
+local MainTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
